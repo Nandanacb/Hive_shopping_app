@@ -33,11 +33,8 @@ class GpageExample extends StatelessWidget{
                         onTap:(){
                    Navigator.pop(context);
                                    } ,
-                                   child: Icon(Icons.arrow_back_ios,size: 20,)),
-                      Spacer(),
-                       Icon(Icons.search,color: Colors.blue,size: 20,),
-                        Icon(Icons.favorite,color: Colors.red,size: 20,),
-                         Icon(Icons.shopping_cart,color: Colors.purple,size: 20,),
+                                   child: Icon(Icons.arrow_back_ios,size: 30,)),
+                      
                     ],
                    ),
                  ),
@@ -94,11 +91,11 @@ class GpageExample extends StatelessWidget{
                  children: [
                    ElevatedButton(onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>AddtoCartExample(imagePath: imagePath, name: name, price: price)));
-                       }, child: Text("Add to Cart",style: TextStyle(fontSize: 10),)),
+                       }, child: Text("Add to Cart",style: TextStyle(fontSize: 10,color: Colors.purple),)),
                  
                  
                 Spacer(),
-                ElevatedButton(onPressed: (){}, child: Text("Buy Now",style: TextStyle(fontSize: 10),)),
+                ElevatedButton(onPressed: (){}, child: Text("Buy Now",style: TextStyle(fontSize: 10,color: Colors.purple),)),
                 ],
                ),
              ),

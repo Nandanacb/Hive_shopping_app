@@ -32,12 +32,10 @@ class AddtoCartExample extends StatelessWidget{
                 ],
               ),
             ),
-            Padding(
-            padding: const EdgeInsets.all(15),
-            child: Container(
-              height: 100,
+            Container(
+              height: 120,
               width: double.infinity,
-             
+             decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
               
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -45,44 +43,74 @@ class AddtoCartExample extends StatelessWidget{
                   children: [
                     Container(
                       height: 100,
-                      decoration: BoxDecoration(border: Border.all(color: Colors.white)),
+                      
+                      
                       child:Image.asset(imagePath), 
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                    
-                      children: [
-                        Text(name),
-                        Text(price),
-                    
-                        Text("  All issues easy return",style: TextStyle(fontSize: 13),),
+                    SizedBox(width: 13),
+                    Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      
+                        children: [
+                          Text( name),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(Icons.currency_rupee,size: 15),
+                              Text( price),
+                            ],
+                          ),
+                      
+                          Text(" All issues easy return",style: TextStyle(fontSize: 13),),
+                          
+                          Row(
+                            children: [
+                              Icon(Icons.remove),
+                              Text(" Remove",style: TextStyle(fontSize: 13),),
+                            ],
+                          ),
                         
-                        Row(
-                          children: [
-                            Icon(Icons.remove),
-                            Text("Remove",style: TextStyle(fontSize: 13),),
-                          ],
-                        ),
-                      
-                       
-                      ],
-                      
+                         
+                        ],
+                        
+                      ),
                     ),
                     
                   ],
                 ),
               )
             ),
-          ),
-          SizedBox(height: 20,),
-        SizedBox(height: 10),
-          Container(
-            height: 500,
+            SizedBox(height: 20 ),
+           Container(
+            height: 40,
             width: double.infinity,
-            
+            decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
             child: Padding(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(8.0),
+              child: Text("sort by: Sankarstores                           Free Delivery",style: TextStyle(
+              fontSize: 15),),
+            ),
+           ),
+          SizedBox(height: 20,),
+          Container(
+            height: 40,
+            width: double.infinity,
+            decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Wishlist",style: TextStyle(fontSize: 20),),
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(
+            height: 250,
+            width: double.infinity,
+            decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +123,7 @@ class AddtoCartExample extends StatelessWidget{
                       Text("Total Product Price",style: TextStyle(fontSize: 20)),
                       Spacer(),
                       Icon(Icons.currency_rupee),
-                      Text("1006",style: TextStyle(fontSize: 20)),
+                      Text(price,style: TextStyle(fontSize: 20)),
                     ],
                   ),
                   SizedBox(height: 10,),
@@ -104,11 +132,11 @@ class AddtoCartExample extends StatelessWidget{
                       Text("Total Discounts",style: TextStyle(color: const Color.fromARGB(255, 3, 114, 7),fontSize: 20),),
                       Spacer(),
                   Icon(Icons.currency_rupee),
-                   Text("581",style: TextStyle(fontSize: 20)),
+                   Text("30",style: TextStyle(fontSize: 20)),
                     ],
                   ),
                     SizedBox(height: 10,),
-                  Text("_________________________________________________"),
+                  Text("____________________________________________________"),
               
                   SizedBox(height: 10,),
                   Row(
@@ -116,22 +144,36 @@ class AddtoCartExample extends StatelessWidget{
                       Text("Order Total",style: TextStyle(fontSize: 20)),
                       Spacer(),
                   Icon(Icons.currency_rupee),
-                   Text("425",style: TextStyle(fontSize: 20)),
+                   Text("185",style: TextStyle(fontSize: 20)),
                     ],
                   ),
-                   
-                   SizedBox(height: 20,),
-                  Container(
-                    height: 50,
-                    width: double.infinity,
-                    color: const Color.fromARGB(255, 70, 177, 74),
-                    child: Center(child: Text("Buy Now",style: TextStyle(fontSize: 20))),
-                  ),
+                  
               
                 ],
               ),
             ),
           ),
+          SizedBox(height: 30,),
+          Container(
+            height: 60,
+            decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  Icon(Icons.currency_rupee,size: 20,),
+                  Text("185"),
+                  Spacer(),
+                  Container(
+                    height: 40,
+                    width: 150,
+                    decoration:
+                    BoxDecoration(color: Colors.purple),
+                     child: Center(child: Text("Continue"))),
+                ],
+              ),
+            ),
+          )
           ],
         ),
       ),

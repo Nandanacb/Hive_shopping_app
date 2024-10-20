@@ -92,7 +92,7 @@ class _RegistrationpageState extends State<Registrationpage>{
                   },
                   child: Text("CREATE AN ACCOUNT",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.purple),))),
               ),
-              SizedBox(height: 60,),
+              SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
