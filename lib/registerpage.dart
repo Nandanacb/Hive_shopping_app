@@ -17,7 +17,7 @@ class _RegistrationpageState extends State<Registrationpage>{
 
   List<Map<String,String>> ListItem=[];
    TextEditingController fullnameController =TextEditingController();
-  TextEditingController emailpasswordController =TextEditingController();
+  TextEditingController emailController =TextEditingController();
   TextEditingController  passwordController=TextEditingController();
   TextEditingController confirmpasswordController =TextEditingController();
   TextEditingController phonenumberController =TextEditingController();
@@ -51,22 +51,27 @@ class _RegistrationpageState extends State<Registrationpage>{
               ),
               SizedBox(height: 50,),
               TextField(
+                controller: fullnameController,
                 decoration: InputDecoration(border: OutlineInputBorder(),hintText: "Full Name"),
               ),
               SizedBox(height: 25,),
               TextField(
+                controller: emailController,
                 decoration: InputDecoration(border: OutlineInputBorder(),hintText: "Email"),
               ),
               SizedBox(height: 25,),
               TextField(
+                controller: passwordController,
                 decoration: InputDecoration(border: OutlineInputBorder(),hintText: "Password"),
               ),
               SizedBox(height: 25,),
               TextField(
+                controller: confirmpasswordController,
                 decoration: InputDecoration(border: OutlineInputBorder(),hintText: "Confirm password"),
               ),
               SizedBox(height: 25,),
               TextField(
+                controller: phonenumberController,
                 decoration: InputDecoration(border: OutlineInputBorder(),hintText: "Phone number"),
               ),
 
@@ -80,7 +85,7 @@ class _RegistrationpageState extends State<Registrationpage>{
                     setState(() {
                       ListItem.add({
                        'fullname':fullnameController.text,
-                       'email':emailpasswordController.text,
+                       'email':emailController.text,
                        'password':passwordController.text,
                        'confirmpassword':confirmpasswordController.text,
                        'phonenumber':phonenumberController.text
@@ -90,7 +95,11 @@ class _RegistrationpageState extends State<Registrationpage>{
                     });
 
                   },
-                  child: Text("CREATE AN ACCOUNT",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.purple),))),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Loginpage()));
+                    },
+                    child: Text("CREATE AN ACCOUNT",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.purple),)))),
               ),
               SizedBox(height: 40),
               Row(

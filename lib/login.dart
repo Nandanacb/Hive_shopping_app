@@ -47,9 +47,13 @@ class  _LoginpageState extends State<Loginpage>{
             SizedBox(height: 30,),
             Text("Login",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: Colors.white),),
             SizedBox(height: 50),
-            TextField(decoration: InputDecoration(border: OutlineInputBorder(),hintText: "Username"),),
+            TextField(
+              controller: usernameController,
+              decoration: InputDecoration(border: OutlineInputBorder(),hintText: "Username"),),
             SizedBox(height: 40,),
-            TextField(decoration: InputDecoration(border: OutlineInputBorder(),hintText: "Password"),),
+            TextField(
+              controller: passwordController,
+              decoration: InputDecoration(border: OutlineInputBorder(),hintText: "Password"),),
             SizedBox(height: 50),
             ElevatedButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=> FirstPage()));
