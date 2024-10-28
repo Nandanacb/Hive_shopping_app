@@ -21,8 +21,10 @@ class  _LoginpageState extends State<Loginpage>{
   }
   void _login(){
    setState(() {
-     String storedusername=box.get('username');
-     String storedpassword=box.get('password');
+     String storedusername=box.get('fullnameController.text');
+     String storedpassword=box.get('passwordController.text');
+     
+    
 
      if(storedusername==usernameController.text && 
      storedpassword==passwordController.text){
@@ -36,11 +38,8 @@ class  _LoginpageState extends State<Loginpage>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      
-      body:Container(
-        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/images/bgg.jpeg"),fit: BoxFit.cover)),
-
-       child: Padding(
+    backgroundColor: const Color.fromARGB(255, 246, 90, 186),
+     body:  Padding(
          padding: const EdgeInsets.all(25),
          child: Column(
           children: [
@@ -61,7 +60,7 @@ class  _LoginpageState extends State<Loginpage>{
           ],
          ),
        ),
-      )
+      
       
     
     );

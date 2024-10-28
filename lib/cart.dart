@@ -1,4 +1,6 @@
 
+import 'package:addtocart_hive/databade.dart';
+import 'package:addtocart_hive/paymentpage.dart';
 import'package:flutter/material.dart';
 
 class AddtoCartExample extends StatelessWidget{
@@ -13,9 +15,7 @@ class AddtoCartExample extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
      
-      body: Container(
-        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/images/bgg.jpeg"),fit: BoxFit.cover)),
-        child: Column(
+      body: Column(
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -28,14 +28,14 @@ class AddtoCartExample extends StatelessWidget{
                       Navigator.pop(context);
                     },child: Icon(Icons.arrow_back_ios,size: 30,)),
                   
-                  Text("  Cart",style: TextStyle(fontSize: 27,fontWeight: FontWeight.bold),),
+                  Text("  Cart",style: TextStyle(fontSize: 27,fontWeight: FontWeight.bold,color:  const Color.fromARGB(255, 233, 10, 147),),),
                 ],
               ),
             ),
             Container(
               height: 120,
               width: double.infinity,
-             decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
+             decoration: BoxDecoration(border: Border.all(color:  const Color.fromARGB(255, 246, 90, 186),width: 2.6),color: Colors.white),
               
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -87,7 +87,7 @@ class AddtoCartExample extends StatelessWidget{
            Container(
             height: 40,
             width: double.infinity,
-            decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
+            decoration: BoxDecoration(border: Border.all(color:  const Color.fromARGB(255, 246, 90, 186),width: 2.6),color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text("sort by: Sankarstores                           Free Delivery",style: TextStyle(
@@ -96,9 +96,9 @@ class AddtoCartExample extends StatelessWidget{
            ),
           SizedBox(height: 20,),
           Container(
-            height: 40,
+            height: 50,
             width: double.infinity,
-            decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
+            decoration: BoxDecoration(border: Border.all(color:  const Color.fromARGB(255, 246, 90, 186),width: 2.6),color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text("Wishlist",style: TextStyle(fontSize: 20),),
@@ -108,7 +108,7 @@ class AddtoCartExample extends StatelessWidget{
           Container(
             height: 250,
             width: double.infinity,
-            decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
+            decoration: BoxDecoration(border: Border.all(color:  const Color.fromARGB(255, 246, 90, 186),width: 2.6),color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Column(
@@ -136,7 +136,7 @@ class AddtoCartExample extends StatelessWidget{
                     ],
                   ),
                     SizedBox(height: 10,),
-                  Text("____________________________________________________"),
+                  Text("__________________________________________________"),
               
                   SizedBox(height: 10,),
                   Row(
@@ -156,7 +156,7 @@ class AddtoCartExample extends StatelessWidget{
           SizedBox(height: 30,),
           Container(
             height: 60,
-            decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
+            decoration: BoxDecoration(border: Border.all(color:  const Color.fromARGB(255, 246, 90, 186),width: 2.6),color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Row(
@@ -164,19 +164,22 @@ class AddtoCartExample extends StatelessWidget{
                   Icon(Icons.currency_rupee,size: 20,),
                   Text("185"),
                   Spacer(),
-                  Container(
-                    height: 40,
-                    width: 150,
-                    decoration:
-                    BoxDecoration(color: Colors.purple),
-                     child: Center(child: Text("Continue"))),
+                 Container(
+                  height: 50,
+                  width: 100,
+                  decoration: BoxDecoration(color: const Color.fromARGB(255, 197, 97, 169)),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Payement()));
+                    },
+                    child: Center(child: Text("continue"))))
                 ],
               ),
             ),
           )
           ],
         ),
-      ),
+      
     );
   }
 }

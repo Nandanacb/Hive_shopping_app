@@ -17,7 +17,7 @@ class Database {
       "image":"assets/images/frock2.jpeg",
       "text1":"VANS",
       "name":"Hooded Carhartt",
-      "price":"215",
+      "price":"300",
     },
 
     
@@ -25,21 +25,21 @@ class Database {
       "image":"assets/images/frock3.jpeg",
       "text1":"RHUDE",
       "name":"Motor Crest Crew",
-      "price":"215",
+      "price":"600",
     },
 
     {
       "image":"assets/images/frock4.jpeg",
       "text1":"CARHARTT WIP",
       "name":"Hooded Carhartt",
-      "price":"215",
+      "price":"700",
     },
 
     {
       "image":"assets/images/frock5.jpeg",
       "text1":"RHUDE",
       "name":"Motor Crest Crew",
-     "price":"215",
+     "price":"1215",
     },
 
     

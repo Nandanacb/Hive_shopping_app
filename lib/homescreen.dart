@@ -24,7 +24,7 @@ class _HomepageState extends State<Homepage>{
       
       body: Container(
         
-        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/images/bgg.jpeg"),fit: BoxFit.cover)),
+        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/images/gppimage.jpg"),fit: BoxFit.cover)),
         child: Center(
           child: Lottie.asset("assets/images/anime.json",
           width: 250,
