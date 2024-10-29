@@ -1,5 +1,5 @@
 
-import 'package:addtocart_hive/databade.dart';
+import 'package:addtocart_hive/database.dart';
 import 'package:addtocart_hive/description.dart';
 import 'package:addtocart_hive/whislist.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +13,17 @@ class _FirstPageState extends State<FirstPage>{
   Widget build(BuildContext context){
     return Scaffold(
 
-      appBar: AppBar(title: Text("SILKY FROCKS",style: TextStyle(color: Colors.white),),
+      appBar: AppBar(title: Text("SILKY FROCKS",style: TextStyle(color: Colors.white)),
+      centerTitle: true,
       actions: [
-        Icon(Icons.shopping_bag),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>WhishlistDemo()));
+          },
+          
+          child: Icon(Icons.favorite,color: Colors.red,)),
+        Icon(Icons.shopping_bag,),
+        
       ],
       backgroundColor: const Color.fromARGB(255, 246, 90, 186),),
       
@@ -46,7 +54,7 @@ class _FirstPageState extends State<FirstPage>{
           Expanded(child: Padding(
             padding: const EdgeInsets.all(15),
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:2,crossAxisSpacing: 10,mainAxisSpacing: 10), 
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:2,crossAxisSpacing: 10,mainAxisSpacing: 10,), 
               itemCount: 8,
               itemBuilder: (context,index){
                 return SizedBox(
@@ -55,15 +63,25 @@ class _FirstPageState extends State<FirstPage>{
                     
                     height: 900,
                     width: double.infinity,
-                    decoration: BoxDecoration(border: Border.all(color: const Color.fromARGB(255, 206, 199, 206),width: 4)),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),border: Border.all(color: const Color.fromARGB(255, 206, 199, 206),width: 4)),
                     child: Column(
                       children: [
-                        Container(
-                          height: 80,
-                          width: double.infinity,
-                         decoration: BoxDecoration(image: DecorationImage(image: AssetImage(Database.myList[index]["image"]))),
-                         
-                          
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Description(
+                              imagePath: Database.myList[index]["image"],
+                              name: Database.myList[index]["name"],
+                              price: Database.myList[index]["price"],
+                              )));
+                          },
+                          child: Container(
+                            height: 80,
+                            width: double.infinity,
+                           decoration: BoxDecoration(image: DecorationImage(image: AssetImage(Database.myList[index]["image"]))),
+                           
+                            
+                          ),
                         ),
                         
                         Text(Database.myList[index]["text1"],style: TextStyle(fontSize: 13,color: const Color.fromARGB(255, 51, 44, 44)),),

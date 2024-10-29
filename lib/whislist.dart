@@ -1,6 +1,6 @@
 
 import 'package:addtocart_hive/cart.dart';
-import 'package:addtocart_hive/databade.dart';
+import 'package:addtocart_hive/database.dart';
 import 'package:flutter/material.dart';
 
 class WhishlistDemo extends StatelessWidget {

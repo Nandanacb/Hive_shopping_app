@@ -3,11 +3,11 @@ import 'package:addtocart_hive/cart.dart';
 import'package:flutter/material.dart';
 
 
-class GpageExample extends StatelessWidget{
+class Description extends StatelessWidget{
   final String imagePath;
   final String name;
   final String price;
-  GpageExample({
+  Description({
   required this.imagePath,required this.name,required this.price
 });
 

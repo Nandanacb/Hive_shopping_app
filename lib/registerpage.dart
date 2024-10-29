@@ -76,6 +76,7 @@ class _RegistrationpageState extends State<Registrationpage>{
                 SizedBox(height: 20,),
                 SizedBox(
                   height: 50,
+                  width: 300,
                   child: TextField(
                     controller: confirmpasswordController,
                     decoration: InputDecoration(border: OutlineInputBorder(),hintText: "Confirm password"),
@@ -126,7 +127,7 @@ class _RegistrationpageState extends State<Registrationpage>{
                           'phonenumber': phonenumberController.text
                         });
                          box.put(
-                          'registeritemsList',
+                          'ListItem',
                          ListItem
                               .map((e) => Map<String, dynamic>.from(e))
                               .toList(),

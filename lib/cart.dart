@@ -1,5 +1,5 @@
 
-import 'package:addtocart_hive/databade.dart';
+import 'package:addtocart_hive/database.dart';
 import 'package:addtocart_hive/paymentpage.dart';
 import'package:flutter/material.dart';
 
@@ -14,10 +14,13 @@ class AddtoCartExample extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-     
+     backgroundColor:   Colors.white,
+     appBar: AppBar(
+      backgroundColor:   const Color.fromARGB(255, 246, 90, 186),
+      title: Text("  Cart",style: TextStyle(fontSize: 27,fontWeight: FontWeight.bold,color: Colors.white),),),
       body: Column(
           children: [
-            Padding(
+            /*Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -30,12 +33,12 @@ class AddtoCartExample extends StatelessWidget{
                   
                   Text("  Cart",style: TextStyle(fontSize: 27,fontWeight: FontWeight.bold,color:  const Color.fromARGB(255, 233, 10, 147),),),
                 ],
-              ),
-            ),
-            Container(
+              ),*/
+              SizedBox(height: 20,),
+             Container(
               height: 120,
               width: double.infinity,
-             decoration: BoxDecoration(border: Border.all(color:  const Color.fromARGB(255, 246, 90, 186),width: 2.6),color: Colors.white),
+             decoration: BoxDecoration(border: Border.all(color: const Color.fromARGB(255, 206, 199, 206),width: 2),color: Colors.white),
               
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -83,32 +86,32 @@ class AddtoCartExample extends StatelessWidget{
                 ),
               )
             ),
-            SizedBox(height: 20 ),
+            SizedBox(height: 10 ),
            Container(
             height: 40,
             width: double.infinity,
-            decoration: BoxDecoration(border: Border.all(color:  const Color.fromARGB(255, 246, 90, 186),width: 2.6),color: Colors.white),
+            decoration: BoxDecoration(border: Border.all(color: const Color.fromARGB(255, 206, 199, 206),width: 2),color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text("sort by: Sankarstores                           Free Delivery",style: TextStyle(
               fontSize: 15),),
             ),
            ),
-          SizedBox(height: 20,),
+          SizedBox(height: 10,),
           Container(
             height: 50,
             width: double.infinity,
-            decoration: BoxDecoration(border: Border.all(color:  const Color.fromARGB(255, 246, 90, 186),width: 2.6),color: Colors.white),
+            decoration: BoxDecoration(border: Border.all(color: const Color.fromARGB(255, 206, 199, 206),width: 2),color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text("Wishlist",style: TextStyle(fontSize: 20),),
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           Container(
             height: 250,
             width: double.infinity,
-            decoration: BoxDecoration(border: Border.all(color:  const Color.fromARGB(255, 246, 90, 186),width: 2.6),color: Colors.white),
+            decoration: BoxDecoration(border: Border.all(color: const Color.fromARGB(255, 206, 199, 206),width: 2),color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Column(
@@ -156,7 +159,7 @@ class AddtoCartExample extends StatelessWidget{
           SizedBox(height: 30,),
           Container(
             height: 60,
-            decoration: BoxDecoration(border: Border.all(color:  const Color.fromARGB(255, 246, 90, 186),width: 2.6),color: Colors.white),
+            decoration: BoxDecoration(border: Border.all(color: const Color.fromARGB(255, 206, 199, 206),width: 2),color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Row(
