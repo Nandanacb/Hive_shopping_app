@@ -1,10 +1,16 @@
 
 import 'package:addtocart_hive/cart.dart';
-import 'package:addtocart_hive/database.dart';
+import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 
 class WhishlistDemo extends StatelessWidget {
-  
+  final List<Map<String,String>> myList;
+
+ 
+
+  WhishlistDemo({required this.myList});
+
  @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -20,17 +26,17 @@ class WhishlistDemo extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: ListView.builder(
-        itemCount: 1,
+        itemCount: myList.length,
           scrollDirection: Axis.vertical,
           itemBuilder: (context,index){
           return ListTile(
-            leading:Image(image: AssetImage(Database.myList[index]["image"])),
-            title: Text(Database.myList[index]["name"]),
-            subtitle: Text(Database.myList[index]["price"]),
+            leading:Image(image: AssetImage(myList[index]["image"]!)),
+            title: Text(myList[index]["name"]!),
+            subtitle: Text(myList[index]["price"]!),
             trailing: ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>AddtoCartExample(imagePath: Database.myList[index]["image"],
-               name: Database.myList[index]["name"],
-                price: Database.myList[index]["price"])));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>AddtoCartExample(imagePath: myList[index]["image"]!,
+               name: myList[index]["name"]!,
+                price: myList[index]["price"]!)));
             }, child:Text("ADD TO CART") ),
           );
           }),

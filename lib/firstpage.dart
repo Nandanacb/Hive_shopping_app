@@ -9,6 +9,18 @@ class FirstPage extends StatefulWidget{
   State<FirstPage> createState()=> _FirstPageState();
 }
 class _FirstPageState extends State<FirstPage>{
+  List<Map<String,String>> myList=[];
+
+ void addMyList(Map<String,String> item){
+  setState(() {
+    if(myList.contains(item)){
+      myList.remove(item);
+    }else{
+      myList.add(item);
+    }
+  });
+ }
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -18,7 +30,7 @@ class _FirstPageState extends State<FirstPage>{
       actions: [
         GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>WhishlistDemo()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>WhishlistDemo(myList: myList)));
           },
           
           child: Icon(Icons.favorite,color: Colors.red,)),
@@ -55,14 +67,12 @@ class _FirstPageState extends State<FirstPage>{
             padding: const EdgeInsets.all(15),
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:2,crossAxisSpacing: 10,mainAxisSpacing: 10,), 
-              itemCount: 8,
+              itemCount: Database.myListItems.length,
               itemBuilder: (context,index){
-                return SizedBox(
-                  height: 20,
-                  child: Container(
-                    
-                    height: 900,
-                    width: double.infinity,
+                final product =Database.myListItems[index];
+                bool isInWhishlist= myList.contains(product);
+
+                return  Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),border: Border.all(color: const Color.fromARGB(255, 206, 199, 206),width: 4)),
                     child: Column(
@@ -70,23 +80,23 @@ class _FirstPageState extends State<FirstPage>{
                         GestureDetector(
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Description(
-                              imagePath: Database.myList[index]["image"],
-                              name: Database.myList[index]["name"],
-                              price: Database.myList[index]["price"],
+                              imagePath: product["image"]!,
+                              name: product["name"]!,
+                              price: product["price"]!,
                               )));
                           },
                           child: Container(
                             height: 80,
                             width: double.infinity,
-                           decoration: BoxDecoration(image: DecorationImage(image: AssetImage(Database.myList[index]["image"]))),
+                           decoration: BoxDecoration(image: DecorationImage(image: AssetImage(product["image"]!))),
                            
                             
                           ),
                         ),
                         
-                        Text(Database.myList[index]["text1"],style: TextStyle(fontSize: 13,color: const Color.fromARGB(255, 51, 44, 44)),),
+                        Text(product["text1"]?? "",style: TextStyle(fontSize: 13,color: const Color.fromARGB(255, 51, 44, 44)),),
                       
-                        Text(Database.myList[index]["name"],style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold)),
+                        Text(product["name"]??"",style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold)),
                         Padding(
                           padding: const EdgeInsets.all(2),
                           child: Row(
@@ -95,13 +105,12 @@ class _FirstPageState extends State<FirstPage>{
                             
                             children: [
                               Icon(Icons.currency_rupee,size: 13,),
-                              Text(Database.myList[index]["price"]),
+                              Text(product["price"]??""),
                               Spacer(),
                               GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>WhishlistDemo()));
-                                },
-                                child: Icon(Icons.favorite_outline)),
+                                onTap: () =>addMyList(product),
+                                child: Icon(Icons.favorite,
+                                color: isInWhishlist? Colors.red:Colors.grey,)),
                             ],
                           ),
                         ),
@@ -109,8 +118,8 @@ class _FirstPageState extends State<FirstPage>{
                         
                       ],
                     ),
-                  ),
-                );
+              );
+              
               }),
           )
           )
