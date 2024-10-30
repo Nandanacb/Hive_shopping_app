@@ -9,14 +9,14 @@ class FirstPage extends StatefulWidget{
   State<FirstPage> createState()=> _FirstPageState();
 }
 class _FirstPageState extends State<FirstPage>{
-  List<Map<String,String>> myList=[];
+  List<Map<String,String>>wishlistItems=[];
 
- void addMyList(Map<String,String> item){
+ void addwishlistItems(Map<String,String> item){
   setState(() {
-    if(myList.contains(item)){
-      myList.remove(item);
+    if(wishlistItems.contains(item)){
+      wishlistItems.remove(item);
     }else{
-      myList.add(item);
+      wishlistItems.add(item);
     }
   });
  }
@@ -30,7 +30,7 @@ class _FirstPageState extends State<FirstPage>{
       actions: [
         GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>WhishlistDemo(myList: myList)));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>WhishlistDemo(wishlistItems: wishlistItems)));
           },
           
           child: Icon(Icons.favorite,color: Colors.red,)),
@@ -67,10 +67,10 @@ class _FirstPageState extends State<FirstPage>{
             padding: const EdgeInsets.all(15),
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:2,crossAxisSpacing: 10,mainAxisSpacing: 10,), 
-              itemCount: Database.myListItems.length,
+              itemCount: Database.myList.length,
               itemBuilder: (context,index){
-                final product =Database.myListItems[index];
-                bool isInWhishlist= myList.contains(product);
+                final product =Database.myList[index];
+                bool isInWhishlist= wishlistItems.contains(product);
 
                 return  Container(
                     decoration: BoxDecoration(
@@ -108,7 +108,7 @@ class _FirstPageState extends State<FirstPage>{
                               Text(product["price"]??""),
                               Spacer(),
                               GestureDetector(
-                                onTap: () =>addMyList(product),
+                                onTap: () =>addwishlistItems(product),
                                 child: Icon(Icons.favorite,
                                 color: isInWhishlist? Colors.red:Colors.grey,)),
                             ],

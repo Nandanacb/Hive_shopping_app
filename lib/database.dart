@@ -1,7 +1,7 @@
 
 
 class Database {
-  static List<Map<String,String>> myListItems=[
+  static List<Map<String,String>> myList=[
     
 
     {
