@@ -1,18 +1,46 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Payement extends StatefulWidget {
+  const Payement({super.key});
   @override
   State<Payement> createState() => _PaymentState();
 }
 
 class _PaymentState extends State<Payement> {
+  TextEditingController cardnumberController = TextEditingController();
+  TextEditingController validateController = TextEditingController();
+  TextEditingController cvvController = TextEditingController();
+
+  String _paymentMessage = "";
+
+  Future<void> _paymentes() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String cardnumber = cardnumberController.text;
+    String validate = validateController.text;
+    String cvv = cvvController.text;
+
+    if (cardnumber.isNotEmpty && validate.isNotEmpty && cvv.isNotEmpty) {
+      await prefs.setString('cardnumber', cardnumber);
+      await prefs.setString('validate', validate);
+      await prefs.setString('cvv', cvv);
+
+      setState(() {
+        _paymentMessage = 'Payment Successful!';
+      });
+    } else {
+      setState(() {
+        _paymentMessage = 'Please fill in both fields!';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-          padding: const EdgeInsets.all(25),
+          padding: const EdgeInsets.all(10),
           child: SingleChildScrollView(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -22,7 +50,7 @@ class _PaymentState extends State<Payement> {
                     height: 50,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color:  const Color.fromARGB(255, 246, 90, 186)),
+                        color: const Color.fromARGB(255, 246, 90, 186)),
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: Row(
@@ -44,7 +72,10 @@ class _PaymentState extends State<Payement> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Icon(Icons.credit_card),
-                      Text("  Credit / Debit / ATM Card",style: TextStyle(fontWeight: FontWeight.bold),),
+                      Text(
+                        "  Credit / Debit / ATM Card",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       Spacer(),
                       Icon(Icons.arrow_drop_down),
                     ],
@@ -53,7 +84,8 @@ class _PaymentState extends State<Payement> {
                     height: 10,
                   ),
                   Text(
-                      "Note: please ensure your card can be used for online transactions.Lean more",style: TextStyle(color: Colors.grey)),
+                      "Note: please ensure your card can be used for online transactions.Lean more",
+                      style: TextStyle(color: Colors.grey)),
                   Padding(
                     padding: const EdgeInsets.all(15),
                     child: Container(
@@ -72,6 +104,7 @@ class _PaymentState extends State<Payement> {
                                 height: 30,
                                 width: double.infinity,
                                 child: TextField(
+                                  controller: cardnumberController,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
                                   ),
@@ -90,6 +123,7 @@ class _PaymentState extends State<Payement> {
                                           height: 30,
                                           width: 100,
                                           child: TextField(
+                                            controller: validateController,
                                             decoration: InputDecoration(
                                                 border: OutlineInputBorder()),
                                           ))
@@ -103,6 +137,7 @@ class _PaymentState extends State<Payement> {
                                           height: 30,
                                           width: 100,
                                           child: TextField(
+                                            controller: cvvController,
                                             decoration: InputDecoration(
                                                 border: OutlineInputBorder()),
                                           ))
@@ -118,13 +153,27 @@ class _PaymentState extends State<Payement> {
                                   height: 30,
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                      color: const Color.fromARGB(255, 212, 245, 80)),
+                                      color: const Color.fromARGB(
+                                          255, 212, 245, 80)),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
-                                      Text("Pay",style: TextStyle(fontWeight: FontWeight.bold)),
-                                      Icon(Icons.currency_rupee,size: 10,),
+                                      GestureDetector(
+                                        onTap: _paymentes,
+                                        child: Text("Pay",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text("$_paymentMessage"),
+                                      Icon(
+                                        Icons.currency_rupee,
+                                        size: 10,
+                                      ),
                                       Text(""),
                                     ],
                                   ),
@@ -144,7 +193,8 @@ class _PaymentState extends State<Payement> {
                         Row(
                           children: [
                             Icon(Icons.percent),
-                            Text("  EMI",style: TextStyle(fontWeight: FontWeight.bold)),
+                            Text("  EMI",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
                             Spacer(),
                             Icon(Icons.arrow_drop_down),
                           ],
@@ -157,7 +207,8 @@ class _PaymentState extends State<Payement> {
                         Row(
                           children: [
                             Icon(Icons.home_work_outlined),
-                            Text("  Net Banking",style: TextStyle(fontWeight: FontWeight.bold)),
+                            Text("  Net Banking",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
                             Spacer(),
                             Icon(Icons.arrow_drop_down),
                           ],
@@ -169,7 +220,8 @@ class _PaymentState extends State<Payement> {
                         Row(
                           children: [
                             Icon(Icons.wallet),
-                            Text("  Wallets",style: TextStyle(fontWeight: FontWeight.bold)),
+                            Text("  Wallets",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
                             Spacer(),
                             Icon(Icons.arrow_drop_down),
                           ],
@@ -181,7 +233,8 @@ class _PaymentState extends State<Payement> {
                         Row(
                           children: [
                             Icon(Icons.check_box),
-                            Text("  UPI",style: TextStyle(fontWeight: FontWeight.bold)),
+                            Text("  UPI",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
                             Spacer(),
                             Icon(Icons.arrow_drop_down),
                           ],
@@ -193,7 +246,8 @@ class _PaymentState extends State<Payement> {
                         Text("_______________________________________________"),
                         Row(children: [
                           Icon(Icons.currency_rupee),
-                          Text("  Cash on Delivery",style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text("  Cash on Delivery",
+                              style: TextStyle(fontWeight: FontWeight.bold)),
                           Spacer(),
                           Icon(Icons.arrow_drop_down),
                         ]),
@@ -204,7 +258,8 @@ class _PaymentState extends State<Payement> {
                         Row(
                           children: [
                             Icon(Icons.card_giftcard),
-                            Text("  Have a Flipcart Gift Card?",style: TextStyle(fontWeight: FontWeight.bold)),
+                            Text("  Have a Flipcart Gift Card?",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
                             Spacer(),
                             Text("Add"),
                           ],
@@ -219,4 +274,3 @@ class _PaymentState extends State<Payement> {
     );
   }
 }
-

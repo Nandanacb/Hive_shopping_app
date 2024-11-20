@@ -5,14 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class Loginpage extends StatefulWidget {
+  const Loginpage({super.key});
   @override
   State<Loginpage> createState() => _LoginpageState();
 }
 
 class _LoginpageState extends State<Loginpage> {
   late Box box;
+
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
   String _loginmessage = "";
 
   @override

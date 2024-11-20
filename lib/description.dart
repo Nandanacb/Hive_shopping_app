@@ -106,16 +106,5 @@ class Description extends StatelessWidget{
       );
 
       
-    
-
-
-
-
-
-
-
-
-
-    
   }
 }
